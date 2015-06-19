@@ -11,4 +11,4 @@ function setupMathContent() {
             $mw.toggleClass("math-inactive math-active");
         });
     });
-});
+}
