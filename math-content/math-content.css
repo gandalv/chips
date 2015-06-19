@@ -1,0 +1,24 @@
+.math-inactive {
+    display: none;
+}
+
+.math-active {
+    display: block;
+}
+
+.math {
+    width: 100%;
+}
+
+.math-content {
+    cursor: pointer;
+}
+
+.math-warning {
+    width: 100%;
+    text-align: center;
+    font-size: 1.1em;
+    cursor: pointer;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+}
