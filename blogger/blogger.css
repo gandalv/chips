@@ -24,7 +24,22 @@
     width: 100%;
     text-align: center;
     font-size: 1.1em;
+    color: gray;
     cursor: pointer;
     margin-top: 0.3em;
     margin-bottom: 0.3em;
+}
+
+.math-warning::before {
+    content: "\222B";
+    margin-right: 0.2em;
+    font-size: 1.3em;
+    vertical-align: middle;
+}
+
+.math-warning::after {
+    content: "\222B";
+    margin-left: 0.2em;
+    font-size: 1.3em;
+    vertical-align: middle;
 }
