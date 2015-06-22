@@ -43,3 +43,42 @@
     font-size: 1.3em;
     vertical-align: middle;
 }
+
+.pseudocode {
+    font-size: 1.2em;
+}
+
+.pseudocode .keyword {
+    color: #dd7700;
+}
+
+.pseudocode .text {
+    color: #cccccc;
+    text-indent: -1em;
+    padding-left: 1em;
+}
+
+.pseudocode .line-number {
+    margin-right: 0.5em;
+}
+
+.pseudocode .line-number:after {
+    content: ":";
+}
+
+code {
+    background-color: #545454;
+    padding-left: 0.15em;
+    padding-right: 0.15em;
+}
+
+.post-body aside {
+    font-size: 0.8em;
+    background-color: #5d4105;
+    padding: 1em;
+    border-radius: 1.1em / 1.1em;
+}
+
+.post-body aside p {
+    margin-bottom: 0em;
+}
