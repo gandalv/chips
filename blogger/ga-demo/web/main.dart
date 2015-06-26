@@ -68,10 +68,8 @@ class VertexCover {
   }
 
   void run() {
-    new Future(() {
-      Optimizer opt = new Optimizer(COLS * ROWS);
-      opt.run();
-    });
+    Optimizer opt = new Optimizer(COLS * ROWS);
+    opt.run();
   }
 
   Fitness evaluateIndividual(List<bool> coveredNodes) {
@@ -101,9 +99,7 @@ class VertexCover {
     }
     feasible = ind.fitness.coveredEdges == totalEdges;
     fitness = ind.fitness;
-    scheduleMicrotask(() {
-      render();
-    });
+    render();
   }
 
   void reset() {
@@ -114,6 +110,7 @@ class VertexCover {
   }
 
   void render() {
+    print('Rendering...');
     if (fitness != null) {
       fitDiv.text = "Best fitness: ${fitness.coveredEdges} covered edges${feasible ? "" : " (infeasible)"}, ${fitness.usedNodes}";
     }
@@ -127,7 +124,7 @@ class VertexCover {
     double dy = h / (ROWS - 1);
     double r = min(min(dx / 4, dy / 4), ox / 2.5);
     CanvasRenderingContext2D ctx = canvas.context2D;
-    ctx.clearRect(0, 0, canvas.client.width, canvas.client.height);
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
     ctx..lineWidth = 1
        ..fillStyle = "#ff0000"
