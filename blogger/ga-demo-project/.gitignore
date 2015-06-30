@@ -2,7 +2,10 @@
 .DS_Store
 .idea
 .pub/
-build/
 packages
 pubspec.lock
 *.iml
+
+# ignore build/ but not the compiled .dart.js
+build/web/*
+!build/web/main.dart.js
