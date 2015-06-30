@@ -1,0 +1,1 @@
+../build/web/main.dart.js
