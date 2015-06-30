@@ -8,7 +8,7 @@ import 'dart:async';
 FacilityLocation facilityLocation;
 
 void main() {
-  facilityLocation = new FacilityLocation('vertex-cover');
+  facilityLocation = new FacilityLocation('facility-location');
 }
 
 class City {
