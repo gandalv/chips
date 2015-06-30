@@ -3894,7 +3894,7 @@ z.textContent="New map"
 u.appendChild(z)
 z=W.L(null)
 this.e=z
-J.IA(z,"1000")
+J.IA(z,"100")
 t=document.createElement("div",null)
 t.toString
 t.appendChild(document.createTextNode("Facility open cost:"))
@@ -3918,7 +3918,7 @@ r.appendChild(this.r)
 u.appendChild(r)
 z=W.L(null)
 this.x=z
-J.IA(z,"0.05")
+J.IA(z,"0.08")
 q=document.createElement("div",null)
 q.toString
 q.appendChild(document.createTextNode("Mutation prob.:"))
@@ -3947,7 +3947,7 @@ z=J.S(this.d)
 H.J(new W.xC(0,z.Q,z.a,W.Z(new F.nJ(this)),z.b),[H.Kp(z,0)]).Y()
 this.CH(0)},
 RX:function(a){return this.fx.$1(a)},
-static:{W:function(a){var z=new F.n5(null,null,null,null,null,null,null,null,null,null,null,null,null,100,50,30,50,1000,new F.M(),C.X,null,null,null)
+static:{W:function(a){var z=new F.n5(null,null,null,null,null,null,null,null,null,null,null,null,null,100,50,30,50,null,new F.M(),C.X,null,null,null)
 z.Pt(a)
 return z}}},
 M:{

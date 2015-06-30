@@ -59,7 +59,7 @@ class FacilityLocation {
   num rfrac = 30;
 
   int nCities = 50;
-  num openCost = 1000;
+  num openCost;
   Function distanceFcn = (d) => (d);
 
   Random rng = new Random();
@@ -96,7 +96,7 @@ class FacilityLocation {
     div.append(resetButton);
 
     facilityCostInput = new InputElement();
-    facilityCostInput.value = '1000';
+    facilityCostInput.value = '100';
     Element facilityCostWrapper = new DivElement();
     facilityCostWrapper.appendText('Facility open cost:');
     facilityCostWrapper.append(facilityCostInput);
@@ -117,7 +117,7 @@ class FacilityLocation {
     div.append(xoverProbWrapper);
 
     mutProbInput = new InputElement();
-    mutProbInput.value = '0.05';
+    mutProbInput.value = '0.08';
     Element mutProbWrapper = new DivElement();
     mutProbWrapper.appendText('Mutation prob.:');
     mutProbWrapper.append(mutProbInput);
