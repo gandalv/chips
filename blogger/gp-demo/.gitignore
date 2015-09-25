@@ -1,0 +1,12 @@
+.buildlog
+.DS_Store
+.idea
+.packages
+.pub/
+packages
+pubspec.lock
+*.iml
+
+# ignore build/ but not the compiled .dart.js
+build/web/*
+!build/web/main.dart.js
