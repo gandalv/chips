@@ -785,7 +785,7 @@ class Problem {
   Problem(String containerId) {
     Element container = querySelector('#${containerId}');
     container.style.width = '100%';
-    container.style.height = '${container.clientWidth}px';
+    // container.style.height = '${container.clientWidth}px';
     container.className = 'center-block';
 
     DivElement outputContainer = new DivElement();
