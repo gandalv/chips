@@ -776,7 +776,7 @@ class Problem {
   var trueFunction = (num x) => 5 * sin(x*x);
   num lb = -5;
   num ub = 5;
-  int samplePointsNum = 20;
+  int samplePointsNum = 40;
   List<Point<double>> samplePoints;
 
   Node bsf;
@@ -849,7 +849,7 @@ class Problem {
     xoverProbInput = new InputElement();
     xoverProbInput.id = 'xoverProb';
     xoverProbInput.type = 'number';
-    xoverProbInput.value = '0.4';
+    xoverProbInput.value = '0.6';
     xoverProbInput.style.width = '100%';
     xoverProbInputWrap.append(xoverProbInput);
     controls.append(xoverProbControl);
@@ -867,7 +867,7 @@ class Problem {
     mutProbInput = new InputElement();
     mutProbInput.id = 'mutProb';
     mutProbInput.type = 'number';
-    mutProbInput.value = '0.5';
+    mutProbInput.value = '0.4';
     mutProbInput.style.width = '100%';
     mutProbInputWrap.append(mutProbInput);
     controls.append(mutProbControl);
@@ -903,7 +903,7 @@ class Problem {
     elitesNumInput = new InputElement();
     elitesNumInput.id = 'elitesNum';
     elitesNumInput.type = 'number';
-    elitesNumInput.value = '10';
+    elitesNumInput.value = '4';
     elitesNumInput.style.width = '100%';
     elitesNumInputWrap.append(elitesNumInput);
     controls.append(elitesNumControl);
