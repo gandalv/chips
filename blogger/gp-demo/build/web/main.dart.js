@@ -5252,7 +5252,7 @@ z=W.aw(null)
 this.d=z
 z.id="xoverProb"
 J.ag(z,"number")
-J.at(this.d,"0.4")
+J.at(this.d,"0.6")
 z=this.d
 v=z.style
 v.width="100%"
@@ -5274,7 +5274,7 @@ z=W.aw(null)
 this.e=z
 z.id="mutProb"
 J.ag(z,"number")
-J.at(this.e,"0.5")
+J.at(this.e,"0.4")
 z=this.e
 v=z.style
 v.width="100%"
@@ -5318,7 +5318,7 @@ z=W.aw(null)
 this.r=z
 z.id="elitesNum"
 J.ag(z,"number")
-J.at(this.r,"10")
+J.at(this.r,"4")
 z=this.r
 v=z.style
 v.width="100%"
@@ -5367,7 +5367,7 @@ H.j(new W.bp(0,z.a,z.b,W.bs(new F.hf(this)),z.c),[H.W(z,0)]).au()
 z=J.cu(this.b)
 H.j(new W.bp(0,z.a,z.b,W.bs(new F.hg(this)),z.c),[H.W(z,0)]).au()},
 cr:function(a){return this.dx.$1(a)},
-static:{hb:function(a){var z=new F.ha(null,null,null,null,null,null,null,null,null,null,null,null,null,null,!1,new F.j9(),-5,5,20,null,null,null)
+static:{hb:function(a){var z=new F.ha(null,null,null,null,null,null,null,null,null,null,null,null,null,null,!1,new F.j9(),-5,5,40,null,null,null)
 z.cW(a)
 return z}}},
 j9:{
@@ -5610,35 +5610,6 @@ C.u=function(getTagFallback) {
     hooks.getTag = getTagFallback;
   };
 }
-C.w=function(hooks) {
-  var userAgent = typeof navigator == "object" ? navigator.userAgent : "";
-  if (userAgent.indexOf("Trident/") == -1) return hooks;
-  var getTag = hooks.getTag;
-  var quickMap = {
-    "BeforeUnloadEvent": "Event",
-    "DataTransfer": "Clipboard",
-    "HTMLDDElement": "HTMLElement",
-    "HTMLDTElement": "HTMLElement",
-    "HTMLPhraseElement": "HTMLElement",
-    "Position": "Geoposition"
-  };
-  function getTagIE(o) {
-    var tag = getTag(o);
-    var newTag = quickMap[tag];
-    if (newTag) return newTag;
-    if (tag == "Object") {
-      if (window.DataView && (o instanceof window.DataView)) return "DataView";
-    }
-    return tag;
-  }
-  function prototypeForTagIE(tag) {
-    var constructor = window[tag];
-    if (constructor == null) return null;
-    return constructor.prototype;
-  }
-  hooks.getTag = getTagIE;
-  hooks.prototypeForTag = prototypeForTagIE;
-}
 C.v=function() {
   function typeNameInChrome(o) {
     var constructor = o.constructor;
@@ -5674,6 +5645,35 @@ C.v=function() {
     getUnknownTag: isBrowser ? getUnknownTagGenericBrowser : getUnknownTag,
     prototypeForTag: prototypeForTag,
     discriminator: discriminator };
+}
+C.w=function(hooks) {
+  var userAgent = typeof navigator == "object" ? navigator.userAgent : "";
+  if (userAgent.indexOf("Trident/") == -1) return hooks;
+  var getTag = hooks.getTag;
+  var quickMap = {
+    "BeforeUnloadEvent": "Event",
+    "DataTransfer": "Clipboard",
+    "HTMLDDElement": "HTMLElement",
+    "HTMLDTElement": "HTMLElement",
+    "HTMLPhraseElement": "HTMLElement",
+    "Position": "Geoposition"
+  };
+  function getTagIE(o) {
+    var tag = getTag(o);
+    var newTag = quickMap[tag];
+    if (newTag) return newTag;
+    if (tag == "Object") {
+      if (window.DataView && (o instanceof window.DataView)) return "DataView";
+    }
+    return tag;
+  }
+  function prototypeForTagIE(tag) {
+    var constructor = window[tag];
+    if (constructor == null) return null;
+    return constructor.prototype;
+  }
+  hooks.getTag = getTagIE;
+  hooks.prototypeForTag = prototypeForTagIE;
 }
 C.x=function(hooks) {
   var getTag = hooks.getTag;
