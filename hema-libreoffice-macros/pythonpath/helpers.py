@@ -127,9 +127,14 @@ def createGroups(doc, participants):
     if cut_n <= 1:
         cut_n = cut_n * len(participants)
     cut_n = round(cut_n)
+    rating_is_rank = doc.Sheets[constants.SETTINGS].getCellByPosition(1, 3).getValue() == 1
+    if rating_is_rank:
+        sort_key = lambda x: x.rating
+    else:
+        sort_key = lambda x: -x.rating
     
     group_sizes = algorithms.findGroupSizes(len(participants), max_group_size)
-    groups = algorithms.assignGroups(group_sizes, sorted(participants, key=lambda x: -x.rating))
+    groups = algorithms.assignGroups(group_sizes, sorted(participants, key=sort_key))
     max_group_size = max(group_sizes)
     
     group_list_sheet = addSheet(doc, constants.GROUP_LIST, 2)

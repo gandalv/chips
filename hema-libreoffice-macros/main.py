@@ -38,7 +38,7 @@ def init():
     ## init participant list
     plist.getCellByPosition(0, 0).setString('Name')
     plist.getCellByPosition(1, 0).setString('Club')
-    plist.getCellByPosition(2, 0).setString('Rating')
+    plist.getCellByPosition(2, 0).setString('Rating/rank')
     plist.getCellByPosition(3, 0).setString('Present?')
     
     ## init settings sheet
@@ -48,6 +48,8 @@ def init():
     settings.getCellByPosition(1, 1).setValue(4)
     settings.getCellByPosition(0, 2).setString('To elimination')
     settings.getCellByPosition(1, 2).setValue(0.8)
+    settings.getCellByPosition(0, 3).setString('Rating is rank')
+    settings.getCellByPosition(1, 3).setValue(1)
     settings.Columns[0].OptimalWidth = True
 
     ## set focus to participant list
