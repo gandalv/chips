@@ -725,34 +725,39 @@ def sortGroupRanking(doc):
     rnd.IsAscending = False
 
     desc = rng.createSortDescriptor()
-    for prop in desc:
-        if prop.Name == 'SortFields':
-            prop.Value = uno.Any('[]com.sun.star.table.TableSortField', (
-                vm,
-                dr,
-                d,
-                r,
-                rnd,
-            ))
-        if prop.Name == 'IsSortColumns':
-            prop.Value = False
-        if prop.Name == 'BindFormatsToContent':
-            prop.Value = False
+    def set_val(name, value):
+        for prop in desc:
+            if prop.Name == name:
+                prop.Value = value
+                return
+    set_val('IsSortColumns', False)
+    set_val('BindFormatsToContent', False)
+    set_val('MaxSortFieldsCount', False)
+    # do it like this because LibreOffice, for some reason, does not add more than 3 sorting criteria, it overwrites the last one with whatever is set as last
+    set_val('SortFields', uno.Any('[]com.sun.star.table.TableSortField', [rnd]))
+    rng.sort(desc)
+    set_val('SortFields', uno.Any('[]com.sun.star.table.TableSortField', [r]))
+    rng.sort(desc)
+    set_val('SortFields', uno.Any('[]com.sun.star.table.TableSortField', [d]))
+    rng.sort(desc)
+    set_val('SortFields', uno.Any('[]com.sun.star.table.TableSortField', [dr]))
+    rng.sort(desc)
+    set_val('SortFields', uno.Any('[]com.sun.star.table.TableSortField', [vm]))
     rng.sort(desc)
 
     equals = []
     for i in range(1, len(participants)):
-        prev_vm = rng.getCellByPosition(1, i - 1).getString()
-        prev_dr = rng.getCellByPosition(2, i - 1).getString()
-        prev_d = rng.getCellByPosition(3, i - 1).getString()
-        prev_r = rng.getCellByPosition(4, i - 1).getString()
-        prev_rnd = rng.getCellByPosition(5, i - 1).getString()
+        prev_vm = rng.getCellByPosition(2, i - 1).getString()
+        prev_dr = rng.getCellByPosition(3, i - 1).getString()
+        prev_d = rng.getCellByPosition(4, i - 1).getString()
+        prev_r = rng.getCellByPosition(5, i - 1).getString()
+        prev_rnd = rng.getCellByPosition(6, i - 1).getString()
 
-        vm = rng.getCellByPosition(1, i).getString()
-        dr = rng.getCellByPosition(2, i).getString()
-        d = rng.getCellByPosition(3, i).getString()
-        r = rng.getCellByPosition(4, i).getString()
-        rnd = rng.getCellByPosition(5, i).getString()
+        vm = rng.getCellByPosition(2, i).getString()
+        dr = rng.getCellByPosition(3, i).getString()
+        d = rng.getCellByPosition(4, i).getString()
+        r = rng.getCellByPosition(5, i).getString()
+        rnd = rng.getCellByPosition(6, i).getString()
 
         if prev_vm == vm and prev_dr == dr and prev_d == d and prev_r == r and prev_rnd == rnd:
             if equals and equals[-1][-1] == i - 1:
