@@ -5,24 +5,23 @@ import sys
 import subprocess
 import pyudev
 
-def on_signal(sig, frame):
-  print('signal', sig, frame)
-  sys.exit(0)
+if __name__ == '__main__':
+  context = pyudev.Context()
+  monitor = pyudev.Monitor.from_netlink(context)
 
-context = pyudev.Context()
-monitor = pyudev.Monitor.from_netlink(context)
-
-def handler(action, device):
-  print(action, device)
-  try:
-    if action != 'bind' or device.properties['adb_adb'] != 'yes':
+  def handler(action, device):
+    print(action, device)
+    try:
+      devlinks = set(device.properties['DEVLINKS'].split())
+      if action != 'bind' or '/dev/android_adb' not in devlinks:
+        return
+    except KeyError:
       return
-  except KeyError:
-    return
-  subprocess.Popen(['scrcpy', '-f'])
+    print('Opening display')
+    subprocess.Popen(['scrcpy', '-f'])
 
-observer = pyudev.MonitorObserver(monitor, handler)
-observer.start()
-signal.signal(signal.SIGINT, on_signal)
-signal.pause()
+  observer = pyudev.MonitorObserver(monitor, handler)
+  observer.start()
+  sig = signal.sigwait(set([signal.SIGINT]))
+  print('Received {}, exitting.'.format(signal.strsignal(sig)))
 
